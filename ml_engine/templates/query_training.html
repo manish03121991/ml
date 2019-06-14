@@ -1,0 +1,87 @@
+{% extends 'dashboard/base.html' %}
+{% load static from staticfiles %}
+{% load group_extras %}
+{% block left_pane %}
+{% include "left_pane_group.html" %}
+{% endblock %}
+
+{% block navbar %}
+<div class="col-md-6">
+    <ul class="breadcrumb">
+        <!--<li><i class="fa fa-home"></i><a href="{% url 'active_feature' %}">Home</a></li>-->
+        <li><a href="{% url 'active_feature' %}">Dashboard</a></li>
+        <li><a href="{% url 'training_dahboard' %}">Training group</a></li>
+        <li class="active">Query training</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block csscontent %}
+<link rel="stylesheet" type="text/css" href="{% static 'js/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom/training_dashboard.css' %}">
+{% endblock %}
+
+{% block bodycontent %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="msg_container"></div>
+        <div class="training_update">
+            <div class="training_update_head">
+                <h4 class="page_heading">&nbsp;</h4>
+                <div>
+                    <ul class="nav nav-tabs text-uppercase">
+                        <li class="active"><a data-toggle="tab" href="#matched">Matched</a></li>
+                        <li><a data-toggle="tab" href="#unmatched">Unmatched</a></li>
+                        <li><a data-toggle="tab" href="#mapped">Mapped</a></li>
+                    </ul>
+                </div>
+                <a href="" class="btn btn-primary btn-lg training_approve_btn">Approve</a>
+            </div>
+            <div class="tab-content">
+                <div id="matched" count="2" class="tab-pane fade in active">
+                    <div class="training_update_list">
+                        
+                    </div>
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination" id="pagination">
+                        <!--JS Pagination   -->
+                        </ul>
+                    </nav>
+                </div>
+                <div id="unmatched" count="2" class="tab-pane fade">
+                    <div class="training_update_list">
+                        
+                    </div>
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination" id="pagination">
+                        <!--JS Pagination   -->
+                        </ul>
+                    </nav>
+                </div>
+                <div id="mapped" count="2" class="tab-pane fade">
+                    <div class="training_update_list">
+                        
+                    </div>
+                    <nav aria-label="Page navigation" class="text-center">
+                        <ul class="pagination" id="pagination">
+                        <!--JS Pagination   -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block jscontent %}
+<script>
+    $(".training_link").addClass('active');
+    </script>
+<script src="{% static 'js/libs/jquery.twbsPagination.min.js' %}"></script>
+<script src="{% static 'js/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'js/custom/training_query.js' %}"></script>
+{% endblock %}
+

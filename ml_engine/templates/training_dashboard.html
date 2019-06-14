@@ -1,0 +1,66 @@
+{% extends 'dashboard/base.html' %}
+{% load static from staticfiles %}
+{% block left_pane %}
+{% include "left_pane_group.html" %}
+{% endblock %}
+
+{% block navbar %}
+<div class="col-md-6">
+    <ul class="breadcrumb">
+        <!--<li><i class="fa fa-home"></i><a href="{% url 'active_feature' %}">Home</a></li>-->
+        <li><a href="{% url 'active_feature' %}">Dashboard</a></li>
+        <li class="active">Training</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block csscontent %}
+<link rel="stylesheet" type="text/css" href="{% static 'js/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom/training_dashboard.css' %}">
+{% endblock %}
+
+{% block bodycontent %}
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="well clearfix">
+            <div action="" class="form-horizontal ">
+                <div class="clearfix">
+                        <label class="col-sm-3 col-lg-2 control-label">Filter by date</label>
+                        <div class="col-xs-5">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="input-sm form-control sb_required height_34" value="" name="start_date" placeholder="Start date">
+                                <span class="input-group-addon" style="border:none;">To</span>
+                                <input type="text" class="input-sm form-control sb_required height_34" value="" name="end_date" placeholder="End date">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn btn-orange btn-block date_range_filter">Go</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="traing_list_container">
+            <div class="training_list_head">
+                <div class="row">
+                    <div class="col-xs-3">Group Name</div>
+                    <div class="col-xs-3">Date</div>
+                    <div class="col-xs-2">Matched</div>
+                    <div class="col-xs-2">Unmatched</div>
+                    <div class="col-xs-2">Mapped</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script>
+    $(".training_link").addClass('active');
+    var group_data={{group_data|safe}};
+</script>
+{% endblock %}
+{% block jscontent %}
+<script src="{% static 'js/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'js/custom/training_dashboard.js' %}"></script>
+{% endblock %}
+
